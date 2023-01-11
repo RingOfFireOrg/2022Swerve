@@ -6,6 +6,7 @@ import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.PS4Controller.Button;
 
+
 public final class Constants {
 
     public static final class ModuleConstants {
@@ -20,6 +21,7 @@ public final class Constants {
         public static final double kDriveEncoderRPM2MeterPerSec = kDriveEncoderRot2Meter / 60;
         public static final double kTurningEncoderRPM2RadPerSec = kTurningEncoderRot2Rad / 60;
         public static final double kPTurning = 0.5;
+        
     }
 
     public static final class DriveConstants {
@@ -34,15 +36,29 @@ public final class Constants {
                 new Translation2d(-kWheelBase / 2, -kTrackWidth / 2),
                 new Translation2d(-kWheelBase / 2, kTrackWidth / 2));
 
-        public static final int kFrontLeftDriveMotorPort = 1;
-        public static final int kBackLeftDriveMotorPort = 7;
-        public static final int kFrontRightDriveMotorPort = 4;
-        public static final int kBackRightDriveMotorPort = 10;
+        // CANSPARKMAX0 = leftFrontTurn
+        // CANSPARKMAX2 = rightFrontTurn
+        // CANSPARKMAX4 = leftBackTurn
+        // CANSPARKMAX6 = rightBackTurn
 
-        public static final int kFrontLeftTurningMotorPort = 2;
-        public static final int kBackLeftTurningMotorPort = 8;
-        public static final int kFrontRightTurningMotorPort = 5;
-        public static final int kBackRightTurningMotorPort = 11;
+        // CANSPARKMAX1 = leftFrontDrive
+        // CANSPARKMAX3 = rightFrontDrive
+        // CANSPARKMAX5 = leftBackDrive
+        // CANSPARKMAX7 = rightBackDrive
+
+
+
+
+
+        public static final int kFrontLeftDriveMotorPort = 1;
+        public static final int kBackLeftDriveMotorPort = 5;
+        public static final int kFrontRightDriveMotorPort = 3;
+        public static final int kBackRightDriveMotorPort = 7;
+
+        public static final int kFrontLeftTurningMotorPort = 0;
+        public static final int kBackLeftTurningMotorPort = 4;
+        public static final int kFrontRightTurningMotorPort = 3;
+        public static final int kBackRightTurningMotorPort = 6;
 
         public static final boolean kFrontLeftTurningEncoderReversed = false;
         public static final boolean kBackLeftTurningEncoderReversed = false;
