@@ -5,6 +5,7 @@ import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.PS4Controller.Button;
+import java.lang.Math;
 
 
 public final class Constants {
@@ -67,7 +68,7 @@ public final class Constants {
 
         public static final boolean kFrontLeftDriveEncoderReversed = false;
         public static final boolean kBackLeftDriveEncoderReversed = true;
-        public static final boolean kFrontRightDriveEncoderReversed = false;
+        public static final boolean kFrontRightDriveEncoderReversed = true;
         public static final boolean kBackRightDriveEncoderReversed = false;
 
         public static final int kFrontLeftDriveAbsoluteEncoderPort = 9;
@@ -80,21 +81,25 @@ public final class Constants {
         public static final boolean kFrontRightDriveAbsoluteEncoderReversed = true;
         public static final boolean kBackRightDriveAbsoluteEncoderReversed = true;
 
-        public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = -(-2.71); //offset in radians
-        public static final double kBackLeftDriveAbsoluteEncoderOffsetRad = -(2.12); //offset in radians
-        public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = -(-7.02); //offset in radians
-        public static final double kBackRightDriveAbsoluteEncoderOffsetRad = -(-6.49); //offset in radians
+        // public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = (0); //offset in radians
+        // public static final double kBackLeftDriveAbsoluteEncoderOffsetRad = (-6.264765 + Math.PI/2 + Math.PI/18); //offset in radians
+        // public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = (Math.PI/4 - Math.PI/12); //offset in radians
+        // public static final double kBackRightDriveAbsoluteEncoderOffsetRad = (3.136984 - Math.PI/9); //offset in radians
+
+        public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = (0+6.280105); //STRAIGHT DONT EDIT 
+        public static final double kBackLeftDriveAbsoluteEncoderOffsetRad = (0-3.150790); //offsetxzs in radians
+        public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = (0-0.967143); //offset in radians
+        public static final double kBackRightDriveAbsoluteEncoderOffsetRad = (0-3.823924); //offset in radians
 
         public static final double kPhysicalMaxSpeedMetersPerSecond = 5;
         public static final double kPhysicalMaxAngularSpeedRadiansPerSecond = 2 * 2 * Math.PI;
-
         public static final double kTeleDriveMaxSpeedMetersPerSecond = kPhysicalMaxSpeedMetersPerSecond / 2.5; //change denomenator
         public static final double kTeleDriveMaxAngularSpeedRadiansPerSecond = kPhysicalMaxAngularSpeedRadiansPerSecond / 4; //change denomenator
         public static final double kTeleDriveMaxAccelerationUnitsPerSecond = 3;
         public static final double kTeleDriveMaxAngularAccelerationUnitsPerSecond = 3;
     }
 
-    public static final class AutoConstants {
+        public static final class AutoConstants {
         public static final double kMaxSpeedMetersPerSecond = DriveConstants.kPhysicalMaxSpeedMetersPerSecond / 4;
         public static final double kMaxAngularSpeedRadiansPerSecond = //
                 DriveConstants.kPhysicalMaxAngularSpeedRadiansPerSecond / 10;

@@ -13,6 +13,8 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.subsystems.SwerveSubsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 
 public class SwerveJoystickCommand extends CommandBase {
 
@@ -60,7 +62,10 @@ public class SwerveJoystickCommand extends CommandBase {
     public void execute() {
         // 1. Get real-time joystick inputs
         double xSpeed = xSpdFunction.get();
-        double ySpeed = ySpdFunction.get();
+        double ySpeed = 0;
+        //SmartDashboard.putNumber("X Spd", xSpdFunction.get());
+        //SmartDashboard.putNumber("Y Spd", ySpdFunction.get());
+
         double turningSpeed = turningSpdFunction.get();
 
         // 2. Apply deadband

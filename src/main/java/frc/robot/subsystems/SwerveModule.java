@@ -33,7 +33,7 @@ public class SwerveModule {
 
     private final CANCoder absoluteEncoder;
     private final boolean absoluteEncoderReversed;
-    private final double absoluteEncoderOffsetRad;
+    public final double absoluteEncoderOffsetRad;
 
     
 
@@ -54,6 +54,9 @@ public class SwerveModule {
 
         driveEncoder = driveMotor.getEncoder();
         turningEncoder = turningMotor.getEncoder();
+
+        
+
 
 
         //turningEncoder.setIntegratedSensorPosition(absoluteEncoder., timeoutMs)
