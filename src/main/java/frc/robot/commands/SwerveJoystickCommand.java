@@ -14,9 +14,12 @@ import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.subsystems.SwerveSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.Controllers;
 
 
 public class SwerveJoystickCommand extends CommandBase {
+    boolean fieldOrientTrue = true;
+    int counter = 0;
 
     private final SwerveSubsystem swerveSubsystem;
     private final Supplier<Double> xSpdFunction, ySpdFunction, turningSpdFunction;
@@ -37,6 +40,7 @@ public class SwerveJoystickCommand extends CommandBase {
     final double angularD = 0.005;
     PIDController turnController = new PIDController(angularP, 0, angularD);
 
+    
 
     public SwerveJoystickCommand(SwerveSubsystem swerveSubsystem,
             Supplier<Double> xSpdFunction, Supplier<Double> ySpdFunction, Supplier<Double> turningSpdFunction,
@@ -56,17 +60,47 @@ public class SwerveJoystickCommand extends CommandBase {
 
     @Override
     public void initialize() {
+        
     }
 
     @Override
     public void execute() {
         // 1. Get real-time joystick inputs
-        double xSpeed = xSpdFunction.get();
+        
+        SmartDashboard.putBoolean("fieldOrientTrue value: ", fieldOrientTrue);
+        SmartDashboard.putNumber("counter value: ", counter);
+
+        double xSpeed = 0;
         double ySpeed = 0;
-        //SmartDashboard.putNumber("X Spd", xSpdFunction.get());
+
+        if (Controllers.get().dGamepadLeftBumper() == true) {
+            fieldOrientTrue = true;
+            counter++;
+        }
+        if (Controllers.get().dGamepadRightBumper() == true) {
+            fieldOrientTrue = false;
+            counter--;
+        }
+
+        
+        
+        if( ((xSpdFunction.get()>0.1 || xSpdFunction.get()<-0.1) || (ySpdFunction.get()>0.1 || ySpdFunction.get()<-0.1))      ) {
+            xSpeed = (xSpdFunction.get());
+            ySpeed = (ySpdFunction.get());
+        }
+
+        // if(ySpdFunction.get()>0.1 || ySpdFunction.get()<-0.1 ) {
+        //     ySpeed = (ySpdFunction.get());
+        // }
+
+
+
+
+
+        //SmartDashboard.putNumber("X Spd", xSpdFunction.get())<
         //SmartDashboard.putNumber("Y Spd", ySpdFunction.get());
 
-        double turningSpeed = turningSpdFunction.get();
+        double turningSpeed = Controllers.get().dGamepadRightTrigger() - Controllers.get().dGamepadLeftTrigger();
 
         // 2. Apply deadband
         xSpeed = Math.abs(xSpeed) > OIConstants.kDeadband ? xSpeed : 0.0;
@@ -98,8 +132,10 @@ public class SwerveJoystickCommand extends CommandBase {
 
         // 4. Construct desired chassis speeds
         ChassisSpeeds chassisSpeeds;
-        
-        if (fieldOrientedFunction.get()) {
+        //fieldOrientedFunction.get()
+
+
+        if (fieldOrientTrue == true) {
             // Relative to field
             chassisSpeeds = ChassisSpeeds.fromFieldRelativeSpeeds(
                     xSpeed, ySpeed, turningSpeed, swerveSubsystem.getRotation2d());

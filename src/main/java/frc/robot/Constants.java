@@ -49,7 +49,7 @@ public final class Constants {
 
 
 
-
+        public static final int CardinalDirection = 0;
 
         public static final int kFrontLeftDriveMotorPort = 8;
         public static final int kBackLeftDriveMotorPort = 4;
@@ -86,10 +86,10 @@ public final class Constants {
         // public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = (Math.PI/4 - Math.PI/12); //offset in radians
         // public static final double kBackRightDriveAbsoluteEncoderOffsetRad = (3.136984 - Math.PI/9); //offset in radians
 
-        public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = (0+6.280105); //STRAIGHT DONT EDIT 
-        public static final double kBackLeftDriveAbsoluteEncoderOffsetRad = (0-3.150790); //offsetxzs in radians
-        public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = (0-0.967143); //offset in radians
-        public static final double kBackRightDriveAbsoluteEncoderOffsetRad = (0-3.823924); //offset in radians
+        public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = (CardinalDirection+3.216752-0.088-.059); //STRAIGHT DONT EDIT 
+        public static final double kBackLeftDriveAbsoluteEncoderOffsetRad = (CardinalDirection-2.775+0.9+.117); //offsetxzs in radians
+        public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = (CardinalDirection+1.146-.137); //offset in radians
+        public static final double kBackRightDriveAbsoluteEncoderOffsetRad = (CardinalDirection-4.8225-1.1); //offset in radians
 
         public static final double kPhysicalMaxSpeedMetersPerSecond = 5;
         public static final double kPhysicalMaxAngularSpeedRadiansPerSecond = 2 * 2 * Math.PI;
